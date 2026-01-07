@@ -249,7 +249,7 @@
     const loginError = document.getElementById('loginError');
 
     btnLogin.addEventListener('click', () => {
-      if (usuarioInput.value.trim() === "Administrador" && passwordInput.value.trim() === "123") {
+      if (usuarioInput.value.trim() === "Administrador" && passwordInput.value.trim() === "admi") {
         loginBox.style.display = 'none';
         contenido.style.display = 'flex';
       } else loginError.textContent = "⚠︎ Usuario o contraseña incorrectos";
@@ -259,3 +259,4 @@
   </script>
 </body>
 </html>
+
