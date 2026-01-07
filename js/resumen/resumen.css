@@ -1,0 +1,747 @@
+/* ======================================================
+     RESUMEN GENERAL — BI (VERSIÓN FINAL LIMPIA)
+====================================================== */
+
+/* ================= CONTENEDOR PRINCIPAL */
+.modulo-resumen {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 24px;
+}
+
+/* ================= SELECTORES */
+.selectores-resumen {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.selectores-resumen .selector-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.selectores-resumen label {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #56585b;
+}
+
+.selectores-resumen select {
+  padding: 10px 36px 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='gray' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 5.5l6 6 6-6'/%3E%3C/svg%3E");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 14px;
+}
+
+.selectores-resumen select:hover {
+  border-color: #3b82f6;
+}
+
+.selectores-resumen select:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* ================= ZONA SUPERIOR */
+.resumen-top {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+/* ================= TARJETAS  */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.card h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #222;
+}
+
+.card button {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  background: #f5f5f5;
+  color: #000;
+  cursor: pointer;
+  display: flex; 
+  gap: 6px; 
+  margin-right: 12px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.card button:hover {
+  background: #e0e0e0; 
+  border-color: #999;   
+}
+/* ================= CONSOLIDADO */
+.card.card-saldo {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+/* KPIs izquierda */
+.kpis-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.saldo-principal span {
+  font-size: 12px;
+  color: #666;
+}
+
+.saldo-principal strong {
+  display: block;
+  font-size: 28px;
+  margin-top: 4px;
+}
+
+.saldo-detalle {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.saldo-detalle small {
+  font-size: 11px;
+  color: #888;
+}
+
+.saldo-detalle span {
+  display: block;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* ================= GASTOS  */
+.gastos-lista {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 0;
+}
+
+/* ================= CARTERA  */
+.card-actividad {
+  flex: 1;
+  padding: 10px;
+}
+
+/* ================= TABLA FLUJO */
+
+.card-tabla {
+  display: flex;
+  flex-direction: column;
+  height: 420px; 
+  border-radius: 16px;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 8px 20px rgba(21, 20, 20, 0.125);
+  overflow: hidden; 
+}
+
+.tabla-scroll {
+  flex: 1;           
+  overflow: auto;    
+  width: 100%;       
+  position: relative; 
+}
+
+.tabla-flujo {
+  width: max-content;
+  border-collapse: separate; 
+  border-spacing: 0;
+  zoom: 0.93; 
+}
+
+/* 4. Estilo de los encabezados (Sticky Arriba) */
+.tabla-flujo thead th {
+  position: sticky;
+  top: 0;
+  z-index: 20; 
+  background: #f2f2f2; 
+  white-space: normal;
+  font-size: 11px;
+  padding: 8px 4px;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ddd;
+}
+
+/* 5. Estilo de las celdas normales */
+.tabla-flujo td {
+  white-space: nowrap; 
+  font-size: 12px;
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+
+/* ================= CORRECCIÓN ESQUINA INMÓVIL  */
+
+/* 1. PRIMERA COLUMNA (SEM) - Fija a la izquierda */
+.tabla-flujo td:first-child,
+.tabla-flujo th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 10; 
+  background: #ffffff; 
+  border-right: 2px solid #ddd; 
+}
+
+/* Header específico de SEM (Arriba a la izquierda) */
+.tabla-flujo th:first-child {
+  z-index: 30; 
+  background: #f2f2f2;
+}
+
+
+/* 2. FILA TOTAL - Fija abajo */
+.tabla-flujo tr.total td {
+  position: sticky;
+  bottom: 0;
+  z-index: 20; 
+  background: #e1e1e1;
+  font-weight: 700;
+  border-top: 1px solid #999;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+
+.tabla-flujo tr.total td:first-child {
+  position: sticky;
+  left: 0;      
+  bottom: 0;    
+  z-index: 50;  
+  
+  background: #dfdfdf; 
+  border-right: 2px solid #999; 
+  border-top: 1px solid #999;   
+}
+
+
+/* ================= ACCIONES TABLA  */
+.acciones-tabla {
+  display: flex;
+  gap: 6px;
+}
+
+/* ================= RESPONSIVE  */
+@media (max-width: 1200px) {
+  .resumen-top {
+    flex-direction: column;
+  }
+}
+
+.tabla-header{
+  display:flex;
+              justify-content:space-between;
+              align-items:center;
+              margin-bottom:8px;
+}
+
+/* ================= MODAL GRÁFICO FLUJO */
+.modal-flujo {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-flujo.hidden {
+  display: none;
+}
+
+.modal-flujo .modal-box {
+  background: #fff;
+  padding: 16px 20px;
+  border-radius: 16px;
+
+  width: 150vw;          /* ⬅️ más ancho */
+  max-width: 1600px;    /* ⬅️ límite cómodo en pantallas grandes */
+  max-height: 85vh;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+
+.modal-flujo .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-flujo .modal-header strong {
+  font-size: 16px;
+}
+
+.modal-flujo .btn-cerrar {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* ================= SELECTOR GRÁFICO FLUJO ================= */
+
+.select-grafico {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background: linear-gradient(180deg, #ffffff, #f2f4f8);
+  border: 1px solid #d0d4dc;
+  border-radius: 10px;
+
+  padding: 8px 34px 8px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #2c2f36;
+
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, #555 50%),
+    linear-gradient(135deg, #555 50%, transparent 50%),
+    linear-gradient(to right, transparent, transparent);
+  background-position:
+    calc(100% - 18px) 50%,
+    calc(100% - 13px) 50%,
+    100% 0;
+  background-size:
+    5px 5px,
+    5px 5px,
+    2.5em 2.5em;
+  background-repeat: no-repeat;
+}
+
+.select-grafico:hover {
+  border-color: #9aa3b2;
+}
+
+.select-grafico:focus {
+  border-color: #4a7bd0;
+  box-shadow: 0 0 0 2px rgba(74,123,208,0.25);
+}
+
+/* Contenedor opcional si lo quieres alineado a la derecha */
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal-header strong {
+  flex: 1;
+}
+
+/* ================= EFECTO LUPA (ZOOM) EN CELDAS  */
+
+.tabla-flujo td:hover {
+  transform: scale(1.1); 
+  transform-origin: center; 
+  position: relative;
+  z-index: 1000; 
+  
+  background-color: #ffffff; 
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4); 
+  border: 1px solid #b0b0b0; 
+  border-radius: 4px; 
+  
+  color: #000 !important; 
+  font-weight: bold; 
+  font-size: 12px; 
+  letter-spacing: normal; 
+  text-align: center;
+  
+  cursor: crosshair; 
+  min-width: 80px; 
+  
+  transition: transform 0.1s ease-out, box-shadow 0.1s ease;
+}
+
+.tabla-flujo td:first-child:hover {
+  transform: scale(1.5); 
+  z-index: 1001;
+  text-align: center;
+}
+
+/* ================= GASTOS BI */
+
+.gasto-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.gasto-label {
+  width: 140px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.gasto-bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.gasto-barra {
+  flex: 1;
+  height: 12px;
+  background: #f2f2f2;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.gasto-barra-color {
+  height: 100%;
+  width: 0%;
+  border-radius: 6px;
+  transition: width 0.6s ease;
+}
+
+.gasto-porcentaje {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  font-weight: 600;
+  color: #888;
+}
+/* ================= MODAL GRÁFICO FLUJO */
+
+.modal-flujo {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-flujo.hidden {
+  display: none;
+}
+
+.modal-box {
+  background: #ffffff;
+  border-radius: 14px;
+  width: 75vw;
+  max-width: 1200px;
+  max-height: 85vh;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.btn-cerrar {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.modal-body {
+  height: 600px;
+}
+/* ================= CARTERA MINIMALISTA */
+
+.cartera-minimalista {
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fafafa;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.17);
+  font-family: "Segoe UI", sans-serif;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+/* Header */
+.cartera-header {
+  display: flex;
+  font-weight: 600;
+  background: #ffffff;
+  color: #555;
+  padding: 7px 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+.cartera-header > div {
+  flex: 1;
+  text-align: center;
+}
+
+.cartera-header .col-empresa {
+  font-weight: 600;
+  text-align: left;
+}
+
+.cartera-header .col-total {
+  font-weight: 700;
+  
+}
+
+/* Filas */
+.cartera-row {
+  display: flex;
+  padding: 6px 8px;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+  
+}
+
+.cartera-row > div {
+  flex: 1;
+  text-align: center;
+  
+}
+
+/* Empresa */
+.col-empresa {
+  flex: 2;
+  font-weight: 500;
+  text-align: left;
+  font-weight: 600;
+
+}
+
+/* Valores */
+.valor-ok {
+  color: #0b5394;
+}
+
+.valor-cero {
+  color: #999;
+}
+
+/* Totales */
+.col-total {
+  font-weight: 600;
+}
+
+.valor-total {
+  color: #000;
+}
+
+/* Fila total */
+.cartera-total {
+  display: flex;
+  padding: 6px 8px;
+  background: #f5f5f5;
+  font-weight: 700;
+  border-top: 1px solid #ccc;
+}
+
+.cartera-total > div {
+  flex: 1;
+  text-align: center;
+}
+
+.cartera-total .col-empresa {
+  text-align: right;
+}
+
+/* ================= BANNER INFORMATIVO */
+
+.cartera-banner {
+  background: #eef0fb;
+  color: #757474;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.banner-icon {
+  color: #db0871;
+  font-size: 18px;
+  line-height: 1;
+}
+/* ================= BARrita DECORATIVA KPI */
+
+.barrita-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 10px ;
+}
+
+.barrita-imagen {
+  width: px;
+  height: auto;
+  object-fit: contain;
+}
+/* ================= GRÁFICO FLUJO */
+
+#graficoFlujo {
+  width: 70%;
+  height: 600px;
+  display: block;
+  margin: 0 auto;
+}
+/* Estado normal (positivo) */
+.barrita-imagen {
+  transform: rotate(0deg);
+  filter: none;
+}
+
+/* Estado negativo */
+.barrita-negativa {
+  transform: rotate(180deg);
+  filter: hue-rotate(140deg) saturate(1.2);
+}
+
+@media (max-width: 768px) {
+
+  .card-tabla {
+    height: auto;
+  }
+
+  .tabla-flujo {
+    zoom: 0.75;
+  }
+
+  .tabla-scroll {
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+
+}
+
+
+/* ================= ICONO REPORTE RESUMEN ================= */
+
+#btnReporteResumen {
+  margin-right: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  opacity: 0.65;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+#btnReporteResumen:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+#btnReporteResumen:active {
+  transform: scale(0.95);
+}
+
+/* ================= MODAL REPORTE RESUMEN ================= */
+
+.modal-reporte {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
+  display: none;                /* 👈 oculto por defecto */
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-reporte-box {
+  background: #ffffff;
+  width: 420px;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  overflow: hidden;
+  animation: modalFadeIn 0.25s ease;
+}
+
+.modal-reporte-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 15px;
+}
+
+.modal-reporte-header button {
+  border: none;
+  background: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.modal-reporte-body {
+  padding: 18px;
+  font-size: 14px;
+  color: #444;
+}
+
+@keyframes modalFadeIn {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
