@@ -457,7 +457,7 @@ function insertarCarteraMinimalista() {
 
     <div class="cartera-banner">
       <span class="banner-icon">🛈</span>
-      <span>Valores tentativos SEM 52</span>
+      <span> TECN: WK52 (5 emb pend.)  /  KRAS: WK52 (19 emb pend.)</span>
     </div>
   `;
 
@@ -938,6 +938,7 @@ function cerrarGraficoFlujo() {
 window.mostrarGraficoFlujo = mostrarGraficoFlujo;
 window.cerrarGraficoFlujo = cerrarGraficoFlujo;
 window.imprimirFlujoDetallado = imprimirFlujoDetallado;
+
 
 
 
