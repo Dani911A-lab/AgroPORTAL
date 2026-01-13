@@ -1,0 +1,414 @@
+/* ======================================================
+   MODULO MANO DE OBRA — CSS
+   (Adaptado desde styles.css del módulo independiente)
+====================================================== */
+
+/* ===== SCOPE DEL MODULO ===== */
+.modulo-mano-obra {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ======================================================
+   MINI SISTEMA AGRÍCOLA — CSS ORIGINAL
+====================================================== */
+
+/* ================= GLOBAL ================= */
+.modulo-mano-obra * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Fredoka One', 'Poppins', 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, system-ui, sans-serif !important;
+}
+
+
+/* ================= SELECTORES ================= */
+.modulo-mano-obra .selectores {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.modulo-mano-obra .selectores label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #706f87;
+}
+
+.modulo-mano-obra .selectores select,
+.modulo-mano-obra .panel-select {
+  padding: 8px 34px 8px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  cursor: pointer;
+  color: #696969;
+}
+
+
+/* ================== SWITCH VISTA — COMPACTO ================== */
+.switch-vista-compacta {
+  display: inline-block;
+  position: relative;
+  font-family: Arial, sans-serif;
+  user-select: none;
+}
+
+.switch-toggle-compact {
+  display: inline-block;
+  position: relative;
+}
+
+.switch-toggle-compact input {
+  display: none; /* ocultar checkbox */
+}
+
+/* Slider con etiquetas siempre visibles */
+.slider-compact {
+  position: relative;
+  width: 120px;       /* ancho total del switch */
+  height: 26px;       
+  background-color: #d2d2d2; /* fondo gris */
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
+}
+
+/* Etiquetas sobre el botón, centradas vertical y horizontalmente */
+.slider-compact .label-left,
+.slider-compact .label-right {
+  position: relative; /* sobre el botón */
+  z-index: 3;         /* siempre arriba */
+  font-size: 10px;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  width: 50%;         /* cada etiqueta ocupa la mitad del switch */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* no bloquear el click */
+}
+
+/* Botón que se mueve detrás de las etiquetas */
+.slider-compact::before {
+  content: "";
+  position: absolute;
+  width: 50px;        /* ancho del botón */
+  height: 19px;       
+  background-color: #0c2f68; /* azul */
+  border-radius: 4px;
+  top: 3px;
+  left: 1px;
+  transition: 0.3s;
+  z-index: 2;         /* detrás de las etiquetas */
+}
+
+/* Mover el botón al estado “Completo” */
+.switch-toggle-compact input:checked + .slider-compact::before {
+  left: 67px; /* ancho total - ancho botón - padding */
+}
+
+/* Cursor pointer */
+.switch-toggle-compact .slider-compact {
+  cursor: pointer;
+}
+
+
+
+#tabla-derecha tbody tr,
+#tabla-derecha tfoot tr {
+  transition: all 0.4s ease-in-out; /* suaviza cambios de altura y opacidad */
+}
+
+#tabla-derecha td,
+#tabla-derecha th {
+  transition: background-color 0.3s, color 0.3s, width 0.3s;
+}
+
+/* Para ocultar columnas secundarias con transición */
+.col-secundaria {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out, width 0.4s ease-in-out, padding 0.4s ease-in-out;
+}
+
+.col-secundaria.oculto {
+  opacity: 0;
+  width: 0;
+  padding: 0;
+}
+
+.slider-compact::before {
+  width: 50px;   /* más pequeño para Ligero */
+  height: 18px;  /* opcional: un poco más bajo */
+  top: 4px;
+  left: 5px;
+  transition: all 0.3s;
+}
+
+.switch-toggle-compact input:checked + .slider-compact::before {
+  width: 55px;  /* más grande para Completo */
+  height: 18px; /* opcional */
+  left: 62px;   /* mover hacia la derecha (ancho total - ancho botón - padding) */
+}
+
+
+
+
+
+
+
+
+
+/* ======================================================
+   CONTENEDORES DOBLES
+====================================================== */
+
+.modulo-mano-obra .contenido-doble {
+  display: flex;
+  gap: 20px;
+  height: 70vh;
+  max-height: 70vh;
+  overflow: hidden;
+}
+
+/* PANEL BASE */
+.modulo-mano-obra .panel {
+  background: rgba(255,255,255,0.9);
+  border-radius: 20px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* IZQUIERDO */
+.modulo-mano-obra .contenido-doble .panel:first-child {
+  width: 40%;
+}
+
+/* DERECHO */
+.modulo-mano-obra .contenido-doble .panel:last-child {
+  width: 60%;
+}
+
+/* ================= PANEL HEADER ================= */
+.modulo-mano-obra .panel-header,
+.modulo-mano-obra .fila-titulo-select {
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+}
+
+/* ================= PANEL BODY ================= */
+.modulo-mano-obra .panel-body {
+  flex: 1;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+/* ======================================================
+   TABLAS
+====================================================== */
+
+.modulo-mano-obra .panel table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 12px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* CABECERA Y FOOTER */
+.modulo-mano-obra .panel thead,
+.modulo-mano-obra .panel tfoot {
+  background: #e0e8fb;
+  position: sticky;
+  z-index: 3;
+}
+
+.modulo-mano-obra .panel thead { top: 0; }
+.modulo-mano-obra .panel tfoot { bottom: 0; font-size: 13px; font-weight: 400; }
+
+
+
+/* Resaltar la categoría seleccionada en la tabla izquierda */
+tr.clickable-selected td {
+  background-color: #fff9b9; /* azul indicador */
+  color: #040404;               /* letras blancas */
+  font-weight: bold;
+}
+
+
+
+
+/* Columnas principales (#, Labor, Unidad, # Pers.) */
+#tabla-derecha td.col-principal {
+  background-color: #f9f9f9; /* gris claro */
+  font-weight: bold;
+}
+
+/* Columnas secundarias (Avance, P/U, Valor) */
+#tabla-derecha td.col-secundaria {
+  background-color: #ffffff; /* blanco o el color por defecto */
+}
+
+
+
+/* ================= TITULOS DE PANELES ================= */
+.modulo-mano-obra .panel-header h3 {
+  font-size: 18px;      /* ⬅️ CAMBIA ESTE VALOR */
+  font-weight: 500;
+  color: #565053;
+}
+
+
+
+/* CELDAS */
+.modulo-mano-obra .panel th,
+.modulo-mano-obra .panel td {
+  padding: 7px 6px;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+  height: 20px;
+   padding: 4px 6px;
+}
+
+/* SCROLL */
+.modulo-mano-obra .panel tbody {
+  display: block;
+  overflow-y: auto;
+  max-height: calc(70vh - 150px);
+}
+
+.modulo-mano-obra .panel thead tr,
+.modulo-mano-obra .panel tbody tr,
+.modulo-mano-obra .panel tfoot tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* FILAS */
+.modulo-mano-obra .panel tbody tr:nth-child(even) {
+  background: #f8f8f8;
+}
+
+.modulo-mano-obra .panel tbody tr:hover {
+  background: #fcedfb;
+}
+
+/* CLICKABLE */
+.modulo-mano-obra .clickable {
+  cursor: pointer;
+  color: #cb1c91;
+  font-weight: 600;
+}
+
+/* ================= BOTÓN PANEL ================= */
+.modulo-mano-obra .panel-boton {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #b11e71;
+  background: #f5e8f1;
+  border: 1px solid #e5c3d9;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ======================================================
+   MODAL GRAFICA
+====================================================== */
+
+.modulo-mano-obra .modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s ease;
+  z-index: 999;
+}
+
+.modulo-mano-obra .modal-overlay.activo {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modulo-mano-obra .modal-contenido {
+  width: 95vw;
+  height: 70vh;
+  background: #ffffff;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* HEADER MODAL */
+.modulo-mano-obra .modal-header {
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modulo-mano-obra .modal-body {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#modulo-mano-obra {
+  padding: 0px 0px 0px;
+  height: 100%;
+  box-sizing: border-box;
+}
+/* =========================================
+   FIX DEFINITIVO — GRAFICA MANO DE OBRA
+========================================= */
+
+/* Wrapper exclusivo para el canvas */
+.modulo-mano-obra .grafica-wrapper-mano {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Anular el canvas global SOLO aquí */
+.modulo-mano-obra .grafica-wrapper-mano canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* Asegurar altura real del body del modal */
+.modulo-mano-obra .modal-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
+/* Altura garantizada del modal */
+.modulo-mano-obra .modal-contenido {
+  height: 85vh;
+}
+
+.modulo-mano-obra .panel tbody td:last-child {
+  color: #1aa35c;
+  font-weight: 700;
+}
