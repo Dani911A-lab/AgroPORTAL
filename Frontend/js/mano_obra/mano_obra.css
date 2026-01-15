@@ -19,7 +19,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Fredoka One', 'Poppins', 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, system-ui, sans-serif !important;
+  font-family: 'Nunito', 'Segoe UI', 'Helvetica Neue', Arial, system-ui, sans-serif !important;
 }
 
 
@@ -87,7 +87,6 @@
   position: relative; /* sobre el botón */
   z-index: 3;         /* siempre arriba */
   font-size: 10px;
-  font-weight: bold;
   color: #ffffff;
   text-align: center;
   width: 50%;         /* cada etiqueta ocupa la mitad del switch */
@@ -181,7 +180,7 @@
 
 /* PANEL BASE */
 .modulo-mano-obra .panel {
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.739);
   border-radius: 20px;
   padding: 18px;
   display: flex;
@@ -192,11 +191,13 @@
 /* IZQUIERDO */
 .modulo-mano-obra .contenido-doble .panel:first-child {
   width: 40%;
+  font-weight: 700;
 }
 
 /* DERECHO */
 .modulo-mano-obra .contenido-doble .panel:last-child {
   width: 60%;
+  font-weight: 400;
 }
 
 /* ================= PANEL HEADER ================= */
@@ -230,9 +231,10 @@
 /* CABECERA Y FOOTER */
 .modulo-mano-obra .panel thead,
 .modulo-mano-obra .panel tfoot {
-  background: #e0e8fb;
+  background: #f0f0f0;
   position: sticky;
   z-index: 3;
+  color: #000000;
 }
 
 .modulo-mano-obra .panel thead { top: 0; }
@@ -247,18 +249,34 @@ tr.clickable-selected td {
   font-weight: bold;
 }
 
+/* ===== AJUSTE REAL DE TAMAÑO Y PESO — ZONA GRIS ===== */
+.modulo-mano-obra #tabla-derecha td.col-principal {
+  font-size: 12px;     /* <-- AQUÍ cambia el tamaño */
+  font-weight: 500;   /* más delgada */
+  color: #3e3e3e;
+}
+
+
+/* P/U en gris */
+.modulo-mano-obra #tabla-derecha td.pu-monetario {
+  color: #9f779a;     /* gris elegante */
+  font-family: Consolas, "Courier New", monospace;
+}
+
+
 
 
 
 /* Columnas principales (#, Labor, Unidad, # Pers.) */
 #tabla-derecha td.col-principal {
   background-color: #f9f9f9; /* gris claro */
-  font-weight: bold;
+  color: #3e3e3e; 
 }
 
 /* Columnas secundarias (Avance, P/U, Valor) */
 #tabla-derecha td.col-secundaria {
   background-color: #ffffff; /* blanco o el color por defecto */
+  
 }
 
 
@@ -303,7 +321,7 @@ tr.clickable-selected td {
 }
 
 .modulo-mano-obra .panel tbody tr:hover {
-  background: #fcedfb;
+  background: #f2dbf3;
 }
 
 /* CLICKABLE */
@@ -412,3 +430,5 @@ tr.clickable-selected td {
   color: #1aa35c;
   font-weight: 700;
 }
+
+
